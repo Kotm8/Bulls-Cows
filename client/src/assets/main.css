@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+@keyframes bg-drift {
+	from {
+		background-position: 0 0, 13px 13px;
+	}
+
+	to {
+		background-position: 600px 600px, 613px 613px;
+	}
+}
+
+.bg-comic {
+	position: relative;
+	overflow: hidden;
+	isolation: isolate;
+}
+
+.bg-comic::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+	background:
+		radial-gradient(circle, rgba(255, 255, 255, 0.12) 2px, transparent 2.5px) 0 0 / 26px 26px,
+		radial-gradient(circle, rgba(255, 255, 255, 0.12) 2px, transparent 2.5px) 13px 13px / 26px 26px;
+	animation: bg-drift 120s linear infinite;
+	pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.bg-comic::before {
+		animation: none;
+	}
+}
