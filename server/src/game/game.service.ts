@@ -1,10 +1,10 @@
 import { Injectable, BadRequestException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository, In } from 'typeorm';
+import { Repository } from 'typeorm';
 import { User } from '../user/user.entity';
 import { Game, GameStatus } from './game.entity'
 import { Attempt } from 'src/attempt/attempt.entity';
-import { ifError } from 'assert';
+
 @Injectable()
 export class GameService {
 	constructor(
@@ -85,6 +85,7 @@ export class GameService {
 		if (!games) throw new BadRequestException('Games don\'t exist');
 		return games.filter(game => game.status === GameStatus.WON);
 	}
+
 	async getAllGames(userId: string) {
 		const games = await this.gameRepo.find({
 			where: { user: { id: userId }},
@@ -121,6 +122,7 @@ function shuffle(array) {
 		const j = Math.floor(Math.random() * (i + 1));
 		[array[i], array[j]] = [array[j], array[i]];
 	}
+	
 	if (array[0] === '0') {
 		const j = Math.floor(Math.random() * (9) + 1);
 		[array[0], array[j]] = [array[j], array[0]];
