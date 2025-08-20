@@ -1,5 +1,5 @@
-Как запустить:
-создать .env файлы в /client и /server
+# Как запустить:
+создать .env файлы в /client и /server<br />
 в файле /client .env написать
 ```
 VITE_API_URL=http://localhost:3000
@@ -22,9 +22,11 @@ DB_NAME=name
 ```
 запустить бэкенд с командой
 ```
+npm install 
 npm start
 ```
 Запустить фронтенд с командой 
 ```
+npm install 
 npm run dev
 ```
