@@ -32,7 +32,7 @@ export class AnonymousSessionGuard implements CanActivate {
 			user = this.users.create({ id: aid });
 			await this.users.save(user);
 		}
-		
+
 		(req as any).anonUser = user;
 		return true;
 	}
